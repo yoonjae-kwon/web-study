@@ -1,0 +1,209 @@
+/* 전체 레이아웃 설정 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+/* 헤더 스타일 */
+header {
+    background-color: #003366;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+header p {
+    margin: 5px 0 0;
+    font-size: 1.2em;
+}
+
+/* 기본 스타일 */
+#navi {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    background-color: #003366;
+}
+
+#navi > li {
+    position: relative; /* 하위 메뉴를 절대 위치로 배치하기 위해 필요 */
+    margin: 0 15px;
+}
+
+#navi > li > a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    display: block;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#navi > li > a:hover {
+    background-color: #0056b3; /* 마우스 오버 시 배경색 변경 */
+    color: #ffffff; /* 텍스트 색상 변경 */
+    border-radius: 5px; /* 부드러운 모서리 */
+}
+
+/* 하위 메뉴 숨기기 */
+#navi ul {
+    list-style: none;
+    position: absolute;
+    top: 100%; /* 부모 메뉴 바로 아래에 위치 */
+    left: 0;
+    background-color: #00509e;
+    padding: 0;
+    margin: 0;
+    display: none; /* 기본적으로 숨김 */
+    z-index: 1000; /* 다른 요소 위에 표시되도록 설정 */
+}
+
+/* 하위 메뉴 항목 스타일 */
+#navi ul li {
+    width: 150px; /* 하위 메뉴의 너비 */
+}
+
+#navi ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    display: block;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#navi ul li a:hover {
+    background-color: #0073e6; /* 하위 메뉴 항목 마우스 오버 시 배경색 변경 */
+    color: #ffffff; /* 텍스트 색상 변경 */
+}
+
+/* 마우스 오버 시 하위 메뉴 표시 */
+#navi li:hover ul {
+    display: block; /* 부모 메뉴에 마우스를 올리면 하위 메뉴 표시 */
+}
+
+/* 로그인 섹션 스타일 */
+#login {
+    background-color: #003366;
+    color: white;
+    padding: 15px;
+    width: 200px;
+    float: left;
+    margin: 20px;
+    border-radius: 5px;
+}
+
+#login label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#login input[type="text"],
+#login input[type="password"] {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+#login input[type="submit"],
+#login input[type="button"] {
+    width: 48%;
+    padding: 5px;
+    margin: 2px 1%;
+    background-color: #00509e;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+#login input[type="submit"]:hover,
+#login input[type="button"]:hover {
+    background-color: #0073e6;
+}
+
+/* 광고 섹션 스타일 */
+#ad {
+    float: right;
+    width: 200px;
+    margin: 20px;
+}
+
+#ad article {
+    background-color: white;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+}
+
+#ad img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* 게시글 섹션 스타일 */
+#post {
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+#post .card {
+    background-color: white;
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#post .card header h3 {
+    margin: 0 0 10px;
+    font-size: 1.5em;
+}
+
+#post .card figure img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+#post .card p {
+    font-size: 0.9em;
+    line-height: 1.6;
+}
+
+/* 푸터 스타일 */
+footer {
+    background-color: #003366;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+
+footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+footer ul li {
+    margin: 0 15px;
+}
+
+footer ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+
