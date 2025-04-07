@@ -38,15 +38,36 @@
       font-size: 0.8em; /* 글자 크기 */
     }
     img {
-    width: 100%; /* 이미지 너비를 부모 요소에 맞춤 */
-    height: auto; /* 비율을 유지하며 높이를 자동 조정 */
-  }
+      width: 100%; /* 이미지 너비를 부모 요소에 맞춤 */
+      height: auto; /* 비율을 유지하며 높이를 자동 조정 */
+      display: block; /* 블록 요소로 설정 */
+    }
+    .image-container {
+      position: relative; /* 캡션을 이미지 위에 얹기 위해 설정 */
+    }
+    .caption {
+      position: absolute; /* 이미지 위에 얹기 위해 설정 */
+      bottom: 0; /* 이미지의 아래쪽에 위치 */
+      left: 0;
+      width: 100%; /* 캡션 너비를 이미지에 맞춤 */
+      background: rgba(255, 255, 255, 0.6); /* 반투명 배경 */
+      color: black;
+      text-align: center;
+      padding: 10px;
+      box-sizing: border-box;
+    }
   </style>
 </head>
 
 <body>
   <div id="container">
-    <img src="apple.jpg" alt="가정용 꿀사과 - 흠집이 있고 약간은 못생겼지만 맛과 영양은 그대로입니다. 질좋은 사과를 저렴하게 즐겨보세요">		
+    <div class="image-container">
+      <img src="apple.jpg" alt="가정용 꿀사과 - 흠집이 있고 약간은 못생겼지만 맛과 영양은 그대로입니다. 질좋은 사과를 저렴하게 즐겨보세요">
+      <div class="caption">
+        <p style="font-size: 1.5em; font-weight: bold; color: #000000; margin: 0;">가정용 꿀사과<br></br>
+        <p style="font-size: 0.7em; color: orange; margin: 0;">흠집이 있고 약간은 못생겼지만 맛과 영양은 그대로입니다. <br>질좋은 사과를 저렴하게 즐겨보세요</p>
+      </div>
+    </div>
     <div id="check">
       <h1>확인하세요</h1>
       <h2>주문 및 배송</h2>
