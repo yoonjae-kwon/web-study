@@ -1,28 +1,47 @@
-/* 전체 레이아웃 설정 */
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f5f5f5;
+    background-color: #114d9b;
 }
 
-/* 헤더 스타일 */
-header {
-    background-color: #003366;
+
+header{
+    background-color: #114d9b;
+    justify-content: space-between; 
     color: white;
-    padding: 20px;
-    text-align: center;
+    text-align: left;
+    margin: 0;
+
+
+}
+
+header hgroup {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
 }
 
 header h1 {
-    margin: 0;
+    margin: 0 0 10px 0; 
     font-size: 2em;
 }
 
 header p {
-    margin: 5px 0 0;
+    margin: 0;
     font-size: 1.2em;
+    top: 38px;
+    position: relative;
+
 }
+
+
+
+
+
+
+
 
 /* 기본 스타일 */
 #navi {
@@ -31,24 +50,24 @@ header p {
     margin: 0;
     display: flex;
     justify-content: center;
-    background-color: #003366;
+    background-color: #114d9b;
 }
 
 #navi > li {
-    position: relative; /* 하위 메뉴를 절대 위치로 배치하기 위해 필요 */
-    margin: 0 15px;
+    position: relative; 
+    margin: 0 10px; 
 }
 
 #navi > li > a {
     color: white;
     text-decoration: none;
-    padding: 10px 15px;
+    padding: 10px 20px;
     display: block;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 #navi > li > a:hover {
-    background-color: #0056b3; /* 마우스 오버 시 배경색 변경 */
+    background-color: #114d9b; /* 마우스 오버 시 배경색 변경 */
     color: #ffffff; /* 텍스트 색상 변경 */
     border-radius: 5px; /* 부드러운 모서리 */
 }
@@ -59,7 +78,7 @@ header p {
     position: absolute;
     top: 100%; /* 부모 메뉴 바로 아래에 위치 */
     left: 0;
-    background-color: #00509e;
+    background-color: #114d9b;
     padding: 0;
     margin: 0;
     display: none; /* 기본적으로 숨김 */
@@ -80,7 +99,7 @@ header p {
 }
 
 #navi ul li a:hover {
-    background-color: #0073e6; /* 하위 메뉴 항목 마우스 오버 시 배경색 변경 */
+    background-color: #114d9b; /* 하위 메뉴 항목 마우스 오버 시 배경색 변경 */
     color: #ffffff; /* 텍스트 색상 변경 */
 }
 
@@ -90,15 +109,19 @@ header p {
 }
 
 /* 로그인 섹션 스타일 */
+
+/* 왼쪽 aside 배경색을 쭉 유지 */
 #login {
-    background-color: #003366;
+    background-color: #114d9b;
     color: white;
     padding: 15px;
     width: 200px;
     float: left;
-    margin: 20px;
-    border-radius: 5px;
+    margin: 10px; /* 상하 여백 제거 */
+    height: 100vh; /* 화면 전체 높이 */
+    box-sizing: border-box; /* 패딩 포함 높이 계산 */
 }
+
 
 #login label {
     display: block;
@@ -114,20 +137,26 @@ header p {
 
 #login input[type="submit"],
 #login input[type="button"] {
-    width: 48%;
+    width: 45%;
     padding: 5px;
     margin: 2px 1%;
-    background-color: #00509e;
-    color: white;
+    background-color: white;
+    color: black;
     border: none;
     border-radius: 3px;
     cursor: pointer;
 }
 
+#login .button-container {
+    display: flex; /* 버튼을 나란히 배치 */
+    justify-content: space-between; /* 버튼 사이 간격 조정 */
+}
+
 #login input[type="submit"]:hover,
 #login input[type="button"]:hover {
-    background-color: #0073e6;
+    background-color: #114d9b;
 }
+
 
 /* 광고 섹션 스타일 */
 #ad {
@@ -153,7 +182,7 @@ header p {
 /* 게시글 섹션 스타일 */
 #post {
     margin: 20px auto;
-    max-width: 800px;
+    max-width: 2000px;
 }
 
 #post .card {
