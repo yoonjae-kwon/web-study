@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>2313609 권윤재</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #f0f4f8;
+      font-family: Arial, sans-serif;
+    }
+    #circle {
+      width: 300px;
+      height: 300px;
+      background: #d0eaf5;
+      border-radius: 50%;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+    #circle strong {
+        font-size: 2em;
+        font-weight: bold;    
+    }
+
+
+    .day {
+      font-size: 3em;
+      font-weight: bold;
+      color: #e74c3c;
+    }
+
+    #circle p {
+      margin: 0;
+      font-size: 1.2em;
+      color: #2c3e50;
+      line-height: 1.4;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="circle">
+    <p id="ddayText"></p>
+  </div>
+
+  <script>
+
+    const nameInput = prompt('D-day 이름을 입력하세요');
+    const dateInput = prompt('D-day 날짜를 입력하세요 (YYYY-MM-DD):');
+
+
+    const targetDate = new Date(dateInput + 'T00:00:00');
+    const today = new Date();
+    today.setHours(0,0,0,0);
+    const diffMs = targetDate - today;
+    const days   = Math.ceil(diffMs / (1000*60*60*24));
+
+
+    const circle = document.getElementById('circle');
+
+
+    if (nameInput && !isNaN(targetDate)) {
+      if (days > 0) {
+        circle.innerHTML =
+          `<p><strong>${nameInput}</strong><br>` +
+          `<span class="day">${days}</span>일 남았습니다.</p>`;
+      } else if (days === 0) {
+        circle.innerHTML =
+          `<p><strong>${nameInput}</strong><br>` +
+          `<span class="day">0</span>오늘입니다</p>`;
+      } else {
+        circle.innerHTML =
+          `<p><strong>${nameInput}</strong><br>` +
+          `<span class="day">${Math.abs(days)}</span>일 전에 지나갔습니다.</p>`;
+      }
+    } else {
+      circle.innerHTML = `<p> 잘못된 입력입니다.</p>`;
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>2313609 권윤재</title>
+  <style>
+    #result {
+      font-size: 30px;
+      color: black;
+      font-weight: bold;
+      padding: 20px;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="result"></div>
+
+  <script>
+    function grade(score) {
+      if (score >= 90) return 'A';
+      else if (score >= 80) return 'B';
+      else if (score >= 70) return 'C';
+      else if (score >= 60) return 'D';
+      else return 'F';
+    }
+
+    const input = prompt('점수를 입력하세요');
+    const score = Number(input);
+
+    let outputText;
+    if (!isNaN(score) && score >= 0 && score <= 100) {
+      const letter = grade(score);
+      outputText = `입력한 점수 ${score}는  ${letter}학점입니다`;
+    } else {
+      outputText = ' 유효한 숫자가 아닙니다다';
+    }
+    document.getElementById('result').textContent = outputText;
+  </script>
+</body>
+</html>

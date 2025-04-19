@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>2313609 권윤재재</title>
+  <style>
+    #deleted, #remaining {
+      margin-top: 10px;
+      font-size: 1.1em;
+      font-weight: bold;
+    }
+
+  </style>
+</head>
+<body>
+
+
+  <div id="deleted">삭제한 값: <span></span></div>
+  <div id="remaining">삭제 이후 결과: <span></span></div>
+
+  <script>
+
+    let data = ["월", "화", "수", "목", "금", "토", "일"];
+
+
+    const removed = data.splice(5, 2);
+
+    document.querySelector('#deleted span').textContent   = removed.join(', ');
+    document.querySelector('#remaining span').textContent = data.join(', ');
+  </script>
+</body>
+</html>
