@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>2313609 권윤재</title>
+  <style>
+    #itemList { list-style: disc inside; padding-left:0; }
+    #itemList li { display: list-item; margin-bottom:8px; cursor:pointer; }
+    #itemList li.completed { text-decoration: line-through; }
+    .delete-btn { display: inline-block; margin-left: 8px; cursor:pointer; }
+    .delete-btn:hover {color: red;}
+  </style>
+</head>
+<body>
+  <div id="container">
+    <h1>To Do List</h1>
+    <p>해야 할 일을 기록해보세요</p>
+    <p>할 일이 끝난 일은 선택하면 취소선이 그어지도록 합니다</p>
+    <p>목록의 우측에 있는 x 버튼을 누르면 해당 항목이 삭제되도록 합니다</p>
+    <form action="">
+      <input type="text" id="subject" autofocus>
+      <button onclick="newRegister(); return false;">추가</button>
+    </form>
+    <hr>
+    <ul id="itemList"></ul>
+  </div>
+
+  <script>
+    function newRegister() {
+      var newItem  = document.createElement("li");
+      var subject  = document.querySelector("#subject");
+      var newText  = document.createTextNode(subject.value);
+      newItem.appendChild(newText);
+    
+      var delBtn = document.createElement("span");
+      delBtn.textContent = " x";          
+      delBtn.className   = "delete-btn";    
+    
+      newItem.appendChild(delBtn);
+    
+      var itemList = document.querySelector("#itemList");
+      itemList.insertBefore(newItem, itemList.childNodes[0]);
+    
+      subject.value = "";
+    
+      newItem.addEventListener("click", function(e) {
+        if (e.target !== delBtn) {
+          this.classList.toggle("completed");
+        }
+      });
+    
+      delBtn.addEventListener("click", function(e) {
+        e.stopPropagation();              
+        if (newItem.parentNode) {
+          newItem.parentNode.removeChild(newItem);
+        }
+      });
+    }
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>To Do List</title>
+  <style>
+  
+    #todo-input,
+    #add-btn {
+      font-size: 1em;
+      padding: 5px;
+    }
+
+    hr {
+      margin: 20px 0;
+      border: none;
+      border-top: 1px solid #ccc;
+    }
+
+    /* ul 기본 불릿과 안쪽 패딩 유지 */
+    #todo-list {
+      list-style: disc inside;
+      padding-left: 0; /* 전체 페이지 여백에 맞춰 0으로 두고 */
+      margin-top: 20px;
+    }
+
+    /* li는 list-item 디스플레이, flex 제거 */
+    #todo-list li {
+      display: list-item;
+      margin-bottom: 8px;
+      cursor: pointer;
+      /* 상대 위치 지정 안 해도 기본 문맥 흐름으로 동그라미 불릿이 뜹니다 */
+    }
+
+    /* 완료된 항목의 취소선 */
+    #todo-list li.completed {
+      text-decoration: line-through;
+      color: gray;
+    }
+
+    /* x 버튼: 텍스트 바로 뒤에 붙이고 약간의 좌측 마진 */
+    .delete-btn {
+      display: inline-block;
+      margin-left: 8px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>To Do List</h1>
+  <p>해야 할 일을 기록해보세요</p>
+  <p>할 일이 끝난 일은 선택하면 취소선이 그어지도록 합니다</p>
+  <p>목록의 우측에 있는 x 버튼을 누르면 해당 항목이 삭제되도록 합니다</p>
+
+  <input type="text" id="todo-input">
+  <button id="add-btn">추가</button>
+
+  <hr>
+
+  <ul id="todo-list"></ul>
+
+  <script>
+    const subject  = document.getElementById('todo-input');
+    const addBtn   = document.getElementById('add-btn');
+    const itemList = document.getElementById('todo-list');
+
+    function newRegister() {
+      const text = subject.value.trim();
+      if (!text) return;
+
+      const newItem = document.createElement('li');
+      newItem.textContent = text;
+
+      // 클릭 시 취소선 토글
+      newItem.addEventListener('click', () => {
+        newItem.classList.toggle('completed');
+      });
+
+      // 삭제 버튼
+      const delBtn = document.createElement('span');
+      delBtn.className   = 'delete-btn';
+      delBtn.textContent = 'X';
+      delBtn.addEventListener('click', e => {
+        e.stopPropagation();
+        itemList.removeChild(newItem);
+      });
+
+      newItem.appendChild(delBtn);
+      itemList.insertBefore(newItem, itemList.firstChild);
+
+      subject.value = '';
+      subject.focus();
+    }
+
+    addBtn.addEventListener('click', e => {
+      e.preventDefault();
+      newRegister();
+    });
+    subject.addEventListener('keydown', e => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        newRegister();
+      }
+    });
+  </script>
+</body>
+</html>
