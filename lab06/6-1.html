@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>2313609 권윤재재</title>
+  <style>
+    .popup {
+      position: fixed;
+      width: 350px;
+      height: 400px;
+      background-color: #4A69BD;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      text-align: center;
+      padding: 20px;
+      box-sizing: border-box;
+      z-index: 1000;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .popup_contents {
+      margin-bottom: 20px;
+    }
+
+    .popup_contents img {
+      display: block;
+      margin: 0 auto 20px;
+      width: 200px; 
+      height: auto;
+    }
+    .notice_text {
+      background-color: white;
+      width: 260px;
+      height: 100px;
+      margin: 0 auto;
+      padding: 10px;
+      box-sizing: border-box;
+      color: #333;
+      overflow-y: auto;
+      text-align: center;
+      line-height: 1.4;
+      border-radius: 4px;
+    }
+    .btn {
+      margin-top: 15px;
+    }
+    .btn button {
+      margin: 0 5px;
+      padding: 5px 10px;
+    }
+  </style>
+  <script>
+    function GetCookie(name) {
+      let pairs = document.cookie.split(';');
+      for (let pair of pairs) {
+        let [key, val] = pair.trim().split('=');
+        if (key === name) return unescape(val);
+      }
+      return null;
+    }
+    function SetCookie(name, value, expireDate) {
+      let cookieStr = name + '=' + escape(value) +
+        (expireDate ? ('; expires=' + expireDate.toUTCString()) : '');
+      document.cookie = cookieStr;
+    }
+  </script>
+</head>
+<body>
+  <h1>쿠키 테스트 하기</h1>
+  <hr>
+  <div>본문 내용 영역</div>
+
+  <div class="popup">
+    <div class="popup_contents">
+      <img src="notice.png" alt="Notice">
+      <div class="notice_text">
+        <br>공지사항을 여기에 적습니다<br>
+
+      </div>
+    </div>
+    <div class="btn">
+      <button onclick="hideToday()">오늘 하루 보지 않기</button>
+      <button onclick="closePopup()">close</button>
+    </div>
+  </div>
+
+  <script>
+    let username = GetCookie('username');
+    let count = parseInt(GetCookie('count') || '0');
+    let expire = new Date();
+
+    if (!username) {
+      username = prompt('이름을 입력해 주십시오.', '');
+      if (!username) {
+        alert('이름을 입력하시면 보다 나은 서비스를 제공받을 수 있습니다.');
+        username = '아무개';
+      }
+      expire.setTime(expire.getTime() + 365*24*3600*1000);
+      SetCookie('username', username, expire);
+    }
+
+    count++;
+    expire.setTime((new Date()).getTime() + 365*24*3600*1000);
+    SetCookie('count', count, expire);
+    document.write("<p>어서오십시오. " + username + "님의 " + count + "번째 방문을 환영합니다!");
+
+
+    function closePopup() {
+      document.querySelector('.popup').style.display = 'none';
+    }
+
+    function hideToday() {
+      let expireToday = new Date();
+      expireToday.setHours(23,59,59,999);
+      SetCookie('today','y',expireToday);
+      closePopup();
+    }
+
+    window.onload = function() {
+      if (GetCookie('today') === 'y') closePopup();
+    };
+  </script>
+</body>
+</html>
