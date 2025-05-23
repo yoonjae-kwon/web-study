@@ -21,16 +21,17 @@ h1 {
   text-align: center;
 }
 
-/* NAV 기본: 작은 화면에서 줄바꿈 가능 */
+/* NAV: 줄바꿈 중심 구조 */
 nav.nav-scroll {
-  display: block;
-  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
   width: 100%;
+  text-align: center;
 }
 
 nav.nav-scroll .nav-btn {
-  display: inline-block;
-  margin: 5px;
   background-color: #3c3c3c;
   color: white;
   text-decoration: none;
@@ -40,20 +41,6 @@ nav.nav-scroll .nav-btn {
   white-space: nowrap;
 }
 
-/* NAV: 아이폰 12 이상에서 일렬 정렬 + 슬라이드 */
-@media (min-width: 390px) {
-  nav.nav-scroll {
-    display: flex;
-    overflow-x: auto;
-    white-space: nowrap;
-    gap: 10px;
-    justify-content: center;
-  }
-
-  nav.nav-scroll .nav-btn {
-    flex: 0 0 auto;
-  }
-}
 
 /* MAIN LAYOUT */
 main {
@@ -112,6 +99,7 @@ main {
   text-align: center;
   margin-top: 10px;
   white-space: nowrap;
+  font-size: 14px;
 }
 
 /* RIGHT PANEL (슬라이더 포함) */
