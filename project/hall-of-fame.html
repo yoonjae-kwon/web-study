@@ -75,7 +75,6 @@
       renderCity(currentIndex);
     }
 
-    // 데이터 fetch → 시/도 그룹화 → 첫 도시 렌더링
     fetch('camps.json')
       .then(res => res.json())
       .then(camps => {
