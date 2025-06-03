@@ -41,20 +41,6 @@ nav.nav-scroll .nav-btn {
   white-space: nowrap;
 }
 
-/* NAV: 아이폰 12 이상에서 일렬 정렬 + 슬라이드 */
-@media (min-width: 390px) {
-  nav.nav-scroll {
-    display: flex;
-    overflow-x: auto;
-    white-space: nowrap;
-    gap: 5px;
-    justify-content: center;
-  }
-
-  nav.nav-scroll .nav-btn {
-    flex: 0 0 auto;
-  }
-}
 
 /* MAIN LAYOUT */
 main {
