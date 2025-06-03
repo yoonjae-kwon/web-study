@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>명예의 전당</title>
+  <link rel="stylesheet" href="fame-style.css">
+</head>
+<body>
+  <!-- 헤더 영역 -->
+  <header class="hero">
+    <h1>명예의 전당</h1>
+    <p>명예의 전당은 지역 내 가장 후기가 좋은 캠핑장들만을 특별히 선별하여 추천해드리는 시스템입니다</p>
+  </header>
+
+  <!-- 본문 섹션 -->
+  <main class="section">
+    <h2 id="city-title">명예로운 캠핑장</h2>
+    <div class="carousel-container">
+      <button class="nav-btn prev" onclick="changeCity(-1)">&#9664;</button>
+      <div class="carousel" id="carousel"></div>
+      <button class="nav-btn next" onclick="changeCity(1)">&#9654;</button>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>문의: 010-1234-5678 / campingisgood@gamil.com</p>
+  </footer>
+
+  <script>
+    let data = [];           // 시/도별 Top3 리스트
+    let currentIndex = 0;    // 현재 도시 인덱스
+
+    // 시/도별 그룹핑 및 평점순 Top3 추출
+    function groupByProvince(list) {
+      const result = {};
+      list.forEach(item => {
+        if (!result[item.province]) result[item.province] = [];
+        result[item.province].push(item);
+      });
+      const fameData = [];
+      Object.entries(result).forEach(([province, arr]) => {
+        arr.sort((a, b) => b.rating - a.rating); // 평점 내림차순
+        fameData.push({
+          city: province,
+          sites: arr.slice(0, 3).map(item => ({
+            name: item.name,
+            address: item.addr,
+            img: item.img,
+            link: item.link
+          }))
+        });
+      });
+      return fameData;
+    }
+
+    // 도시/도 slide 랜더링
+    function renderCity(index) {
+      const city = data[index];
+      if (!city) return;
+      document.getElementById('city-title').textContent = `${city.city}의 명예로운 캠핑장`;
+      document.getElementById('carousel').innerHTML = city.sites.map(site => `
+        <div class="card">
+          <img src="${site.img}" alt="${site.name}">
+          <h3>${site.name}</h3>
+          <p>${site.address}</p>
+          <a href="${site.link}" target="_blank"><button>상세보기</button></a>
+        </div>
+      `).join('');
+    }
+
+    function changeCity(direction) {
+      currentIndex = (currentIndex + direction + data.length) % data.length;
+      renderCity(currentIndex);
+    }
+
+    fetch('camps.json')
+      .then(res => res.json())
+      .then(camps => {
+        data = groupByProvince(camps);
+        currentIndex = 0;
+        renderCity(currentIndex);
+      })
+      .catch(err => {
+        document.getElementById('carousel').innerHTML = "<p style='color:red'>데이터를 불러올 수 없습니다.</p>";
+      });
+  </script>
+</body>
+</html>
