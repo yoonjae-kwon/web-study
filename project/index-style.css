@@ -41,7 +41,6 @@ nav.nav-scroll .nav-btn {
   white-space: nowrap;
 }
 
-<<<<<<< HEAD:project/style.css
 /* NAV: 아이폰 12 이상에서 일렬 정렬 + 슬라이드 */
 @media (min-width: 390px) {
   nav.nav-scroll {
@@ -56,8 +55,6 @@ nav.nav-scroll .nav-btn {
     flex: 0 0 auto;
   }
 }
-=======
->>>>>>> c52ec5548115070e358c6f12f4dd469af0f3d910:project/index-style.css
 
 /* MAIN LAYOUT */
 main {
